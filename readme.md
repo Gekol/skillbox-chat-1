@@ -47,7 +47,8 @@ Windows: [инструкция](https://help.keenetic.com/hc/ru/articles/2139658
 
 ### Проблема установки PyQt5-sip (Windows)
 
-Необходимо установить С++ build tools: [Объяснение](https://stackoverflow.com/a/40525033/4941870) -> [Качать отсюда](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019) "Build Tools for Visual Studio 2019". Установить.
+Необходимо установить С++ build tools: [Объяснение](https://stackoverflow.com/a/40525033/4941870) -> [Качать отсюда](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019) "
+Build Tools for Visual Studio 2019". Установить.
 
 ## Структура репозитория
 
