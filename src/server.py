@@ -16,10 +16,6 @@ class ServerProtocol(LineOnlyReceiver):
     factory: 'Server'
     login: str = None
 
-    def connectionMade(self):
-        # Потенциальный баг для внимательных =)
-        self.factory.clients.append(self)
-
     def connectionLost(self, reason=connectionDone):
         self.factory.clients.remove(self)
 
@@ -36,8 +32,7 @@ class ServerProtocol(LineOnlyReceiver):
             if len(self.factory.last_ten) == 11:
                 self.factory.last_ten.pop(0)
             for user in self.factory.clients:
-                if user is not self:
-                    user.sendLine(content.encode())
+                user.sendLine(content.encode())
         else:
             # login:admin -> admin
             if content.startswith("login:"):
@@ -65,6 +60,14 @@ class Server(ServerFactory):
 
     def stopFactory(self):
         print("Server closed")
+
+    def send_history(self, client: ServerProtocol):
+        client.sendLine("Welcome!".encode())
+
+        last_messages = self.history[-10:]
+
+        for msg in last_messages:
+            client.sendLine(msg.encode())
 
 
 reactor.listenTCP(1234, Server())

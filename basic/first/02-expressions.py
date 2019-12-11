@@ -17,9 +17,9 @@ else:
     print("Купить еще можно")
 
 users = ["Artur", "John", "Jack"]
-
 for user in users:
     print("Hello, " + user)
+
 
 counter = 0
 while counter < 10:
